@@ -1,4 +1,4 @@
-require "toggl/jobcan/version"
+require 'toggl/jobcan/version'
 
 module Toggl
   module Jobcan
