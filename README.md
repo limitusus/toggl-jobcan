@@ -1,8 +1,6 @@
 # Toggl::Jobcan
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/toggl/jobcan`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem provides `toggl-jobcan` command, which synchronises working time data in Toggl to JobCan.
 
 ## Installation
 
@@ -22,7 +20,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Pass date strings in `%Y%m%d` format.
+
+```console
+toggl-jobcan 20170201 20170202
+```
+
+To synchronise all days in a month, utilise `seq` command:
+
+```console
+toggl-jobcan `seq -f '201702%02g' 1 28`
+```
 
 ## Development
 

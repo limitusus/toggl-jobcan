@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+lib = File.expand_path('../lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'selenium-webdriver'
+require 'toggl/jobcan'
+require 'toggl/worktime'
+
+cred_file = "#{ENV['HOME']}/.jobcan"
+
+Version = Toggl::Jobcan::VERSION
+
+raise RangeError, 'No dates given' if ARGV.empty?
+target_days = ARGV.map do |s|
+  raise RangeError, 'Invalid format' unless s.match?(/\d#{8}/)
+  Date.parse(s)
+end
+
+puts 'Target days:'
+target_days.each do |date|
+  puts "  - #{date.strftime('%F')}"
+end
+
+credentials = Toggl::Jobcan::Credentials.new(path: cred_file)
+jobcan = Toggl::Jobcan::Client.new(credentials: credentials)
+jobcan.login
+
+puts 'Driver ready'
+
+target_days.each do |date|
+  puts "Input date: #{date}"
+  jobcan.navigate_to_attendance_modify_day(date)
+  working_times = jobcan.fetch_toggl_worktime(date).flatten
+  if working_times.any?(&:nil?)
+    puts 'Includes nil data: skip'
+    next
+  end
+  jobcan.input_day_worktime(date, working_times)
+  sleep 1
+  puts "  - Finish: #{date}; Total time: #{jobcan.toggl.total_time}"
+end
+
+jobcan.driver.quit
+
+puts 'All Input finished'
