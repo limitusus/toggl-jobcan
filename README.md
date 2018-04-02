@@ -18,7 +18,18 @@ Or install it yourself as:
 
     $ gem install toggl-jobcan
 
+## Configuration
+
+Prepare `~/.jobcan` YAML file that includes:
+
+```yaml
+client_id: YOUR_CLIENT_ID
+email: YOUR_EMAIL_ADDRESS
+password: YOUR_PASSWORD
+```
+
 ## Usage
+
 
 Pass date strings in `%Y%m%d` format.
 
