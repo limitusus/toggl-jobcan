@@ -10,12 +10,6 @@ module Toggl
 
       include Toggl::Jobcan::TogglSupport
 
-      DEFAULT_CONFIG = {
-        timezone: 'Asia/Tokyo',
-        day_begin_hour: 6,
-        max_working_interval: 10
-      }.freeze
-
       JOBCAN_URLS = {
         attendance: 'https://ssl.jobcan.jp/employee/attendance',
         attendance_modify: 'https://ssl.jobcan.jp/employee/adit/modify/'
@@ -30,14 +24,14 @@ module Toggl
 
       def initialize(credentials: nil,
                      options: Selenium::WebDriver::Chrome::Options.new,
+                     toggl_worktime_config:,
                      dryrun: false
                     )
         @credentials = credentials
-        @config = DEFAULT_CONFIG
         options.add_argument('--headless')
         @driver = Selenium::WebDriver.for :chrome, options: options
         @toggl = Toggl::Worktime::Driver.new(
-          max_working_interval: @config[:max_working_interval]
+          config: Toggl::Worktime::Config.new(path: toggl_worktime_config),
         )
         @dryrun = dryrun
       end

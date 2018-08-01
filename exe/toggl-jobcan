@@ -13,10 +13,14 @@ cred_file = "#{ENV['HOME']}/.jobcan"
 
 Version = Toggl::Jobcan::VERSION
 
+toggl_worktime_config = "#{ENV['HOME']}/.toggl_worktime"
 dryrun = false
+
 opt = OptionParser.new
+opt.on('-c CONFIG', '--tw-config CONFIG') { |v| toggl_worktime_config = v }
 opt.on('--dryrun') { |v| dryrun = v }
 opt.parse!(ARGV)
+
 raise RangeError, 'No dates given' if ARGV.empty?
 target_days = ARGV.map do |s|
   raise RangeError, 'Invalid format' unless s.match?(/\d#{8}/)
@@ -31,7 +35,11 @@ target_days.each do |date|
 end
 
 credentials = Toggl::Jobcan::Credentials.new(path: cred_file)
-jobcan = Toggl::Jobcan::Client.new(credentials: credentials, dryrun: dryrun)
+jobcan = Toggl::Jobcan::Client.new(
+  credentials: credentials,
+  toggl_worktime_config: toggl_worktime_config,
+  dryrun: dryrun
+)
 jobcan.login
 
 puts 'Driver ready'
