@@ -2,6 +2,8 @@
 
 This gem provides `toggl-jobcan` command, which synchronises working time data in Toggl to JobCan.
 
+This gem requires Ruby >= 2.5.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,6 +24,8 @@ Or install it yourself as:
 
 Prepare `~/.toggl` including Toggl API token so that [Toggl::Worktime](https://github.com/limitusus/toggl-worktime) works.
 
+Prepare `~/.toggl_worktime` for [Toggl::Worktime](https://github.com/limitusus/toggl-worktime) (Path can be specified via `-c` option).
+
 Prepare `~/.jobcan` YAML file that includes:
 
 ```yaml
@@ -31,7 +35,6 @@ password: YOUR_PASSWORD
 ```
 
 ## Usage
-
 
 Pass date strings in `%Y%m%d` format.
 
@@ -44,6 +47,8 @@ To synchronise all days in a month, utilise `seq` command:
 ```console
 toggl-jobcan `seq -f '201702%02g' 1 28`
 ```
+
+You can simulate the inputs with `--dryrun` option.
 
 ## Development
 
