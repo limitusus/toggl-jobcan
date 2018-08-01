@@ -5,10 +5,7 @@ module Toggl
     # Provides support methods for Toggl
     module TogglSupport
       def fetch_toggl_worktime(date)
-        @toggl.merge!(
-          date.month, date.day,
-          @config[:day_begin_hour], @config[:timezone]
-        )
+        @toggl.merge!(date.year, date.month, date.day)
         @toggl.work_time
       end
 
