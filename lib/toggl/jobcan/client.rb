@@ -29,7 +29,9 @@ module Toggl
       }.freeze
 
       def initialize(credentials: nil,
-                     options: Selenium::WebDriver::Chrome::Options.new)
+                     options: Selenium::WebDriver::Chrome::Options.new,
+                     dryrun: false
+                    )
         @credentials = credentials
         @config = DEFAULT_CONFIG
         options.add_argument('--headless')
@@ -37,6 +39,7 @@ module Toggl
         @toggl = Toggl::Worktime::Driver.new(
           max_working_interval: @config[:max_working_interval]
         )
+        @dryrun = dryrun
       end
 
       def login
@@ -92,7 +95,7 @@ module Toggl
           navigate_to_attendance_modify_day(date)
           send_timestamp input_stamp
           send_notice
-          @driver.find_element(:id, 'insert_button').submit
+          @driver.find_element(:id, 'insert_button').submit unless @dryrun
         end
       end
 
