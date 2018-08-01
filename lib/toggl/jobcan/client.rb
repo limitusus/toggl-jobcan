@@ -32,7 +32,7 @@ module Toggl
         options.add_argument('--headless')
         @driver = Selenium::WebDriver.for :chrome, options: options
         @toggl = Toggl::Worktime::Driver.new(
-          config: Toggl::Worktime::Config.new(path: toggl_worktime_config),
+          config: Toggl::Worktime::Config.new(path: toggl_worktime_config)
         )
         @dryrun = dryrun
       end
