@@ -4,6 +4,8 @@
 lib = File.expand_path('../lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+require 'optparse'
+
 require 'selenium-webdriver'
 require 'toggl/jobcan'
 require 'toggl/worktime'
@@ -12,11 +14,17 @@ cred_file = "#{ENV['HOME']}/.jobcan"
 
 Version = Toggl::Jobcan::VERSION
 
+dryrun = false
+opt = OptionParser.new
+opt.on('--dryrun') { |v| dryrun = v }
+opt.parse!(ARGV)
 raise RangeError, 'No dates given' if ARGV.empty?
 target_days = ARGV.map do |s|
   raise RangeError, 'Invalid format' unless s.match?(/\d#{8}/)
   Date.parse(s)
 end
+
+puts '*** DRYRUN MODE ***' if dryrun
 
 puts 'Target days:'
 target_days.each do |date|
@@ -24,7 +32,7 @@ target_days.each do |date|
 end
 
 credentials = Toggl::Jobcan::Credentials.new(path: cred_file)
-jobcan = Toggl::Jobcan::Client.new(credentials: credentials)
+jobcan = Toggl::Jobcan::Client.new(credentials: credentials, dryrun: dryrun)
 jobcan.login
 
 puts 'Driver ready'
