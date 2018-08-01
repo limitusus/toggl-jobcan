@@ -22,11 +22,12 @@ module Toggl
         password_label: %(//label[@for='password'])
       }.freeze
 
-      def initialize(credentials: nil,
-                     options: Selenium::WebDriver::Chrome::Options.new,
-                     toggl_worktime_config:,
-                     dryrun: false
-                    )
+      def initialize(
+            credentials: nil,
+            options: Selenium::WebDriver::Chrome::Options.new,
+            toggl_worktime_config:,
+            dryrun: false
+          )
         @credentials = credentials
         options.add_argument('--headless')
         @driver = Selenium::WebDriver.for :chrome, options: options
