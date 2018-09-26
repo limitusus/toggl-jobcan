@@ -28,8 +28,9 @@ Prepare `~/.toggl_worktime` for [Toggl::Worktime](https://github.com/limitusus/t
 
 Prepare `~/.jobcan` YAML file that includes:
 
+From v0.3.0 you need to specify *Jobcan ID*, not *Jobcan Attendance ID*. For details read the [documentation by Jobcan](https://jobcanwf.zendesk.com/hc/ja/articles/224910508).
+
 ```yaml
-client_id: YOUR_CLIENT_ID
 email: YOUR_EMAIL_ADDRESS
 password: YOUR_PASSWORD
 ```
