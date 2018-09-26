@@ -8,9 +8,13 @@ module Toggl
       attr_reader :driver
       attr_reader :toggl
 
+      class JobcanLoginFailure < StandardError; end
+
       include Toggl::Jobcan::TogglSupport
 
       JOBCAN_URLS = {
+        login: 'https://id.jobcan.jp/users/sign_in',
+        attendance_login: 'https://ssl.jobcan.jp/jbcoauth/login',
         attendance: 'https://ssl.jobcan.jp/employee/attendance',
         attendance_modify: 'https://ssl.jobcan.jp/employee/adit/modify/'
       }.freeze
@@ -18,8 +22,9 @@ module Toggl
       XPATHS = {
         notice: %(//textarea[@name='notice']),
         load_button: %(//input[@value='表示']),
-        submit: %(//button[@type='submit']),
-        password_label: %(//label[@for='password'])
+        submit: %(//input[@type='submit']),
+        password_label: %(//label[@for='user_password']),
+        flash: %(//p[@class='flash flash__alert'])
       }.freeze
 
       def initialize(
@@ -38,20 +43,23 @@ module Toggl
       end
 
       def login
-        @driver.navigate.to JOBCAN_URLS[:attendance]
-        # login if <label for="password"> exists
-        return unless may_find_element(:xpath, XPATHS[:password_label])
+        @driver.navigate.to JOBCAN_URLS[:login]
+        # login if <label for="user_password"> exists
+        raise unless may_find_element(:xpath, XPATHS[:password_label])
+
         send_credentials
         @driver.find_element(:xpath, XPATHS[:submit]).click
-        # attendance again
+        raise JobcanLoginFailure if may_find_element(:xpath, XPATHS[:flash])
+
+        # attendance login
+        @driver.navigate.to JOBCAN_URLS[:attendance_login]
         @driver.navigate.to JOBCAN_URLS[:attendance]
       end
 
       def send_credentials
         [
-          ['client_id', :client_id],
-          ['email', :email],
-          ['password', :password]
+          ['user_email', :email],
+          ['user_password', :password]
         ].each do |id, method|
           element = @driver.find_element(:id, id)
           element.send_keys(@credentials.send(method))
