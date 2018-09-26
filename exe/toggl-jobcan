@@ -22,8 +22,10 @@ opt.on('--dryrun') { |v| dryrun = v }
 opt.parse!(ARGV)
 
 raise RangeError, 'No dates given' if ARGV.empty?
+
 target_days = ARGV.map do |s|
   raise RangeError, 'Invalid format' unless s.match?(/\d#{8}/)
+
   Date.parse(s)
 end
 
