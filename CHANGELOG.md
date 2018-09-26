@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.3.0](https://github.com/limitusus/toggl-jobcan/tree/v0.3.0) (2018-09-26)
+[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.2.0...v0.3.0)
+
+**Merged pull requests:**
+
+- Switch to Jobcan ID [\#3](https://github.com/limitusus/toggl-jobcan/pull/3) ([limitusus](https://github.com/limitusus))
+
 ## [v0.2.0](https://github.com/limitusus/toggl-jobcan/tree/v0.2.0) (2018-08-01)
 [Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.1.1...v0.2.0)
 
