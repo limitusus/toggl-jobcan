@@ -14,11 +14,15 @@ gem 'toggl-jobcan'
 
 And then execute:
 
-    $ bundle
+```console
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install toggl-jobcan
+```console
+gem install toggl-jobcan
+```
 
 ## Configuration
 
@@ -28,8 +32,9 @@ Prepare `~/.toggl_worktime` for [Toggl::Worktime](https://github.com/limitusus/t
 
 Prepare `~/.jobcan` YAML file that includes:
 
+From v0.3.0 you need to specify *Jobcan ID*, not *Jobcan Attendance ID*. For details read the [documentation by Jobcan](https://jobcanwf.zendesk.com/hc/ja/articles/224910508).
+
 ```yaml
-client_id: YOUR_CLIENT_ID
 email: YOUR_EMAIL_ADDRESS
 password: YOUR_PASSWORD
 ```
@@ -58,7 +63,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/limitusus/toggl-jobcan. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [limitusus/toggl-jobcan](https://github.com/limitusus/toggl-jobcan). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

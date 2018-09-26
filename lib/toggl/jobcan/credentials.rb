@@ -6,14 +6,13 @@ module Toggl
   module Jobcan
     # Jobcan credentials manager
     class Credentials
-      attr_accessor :client_id
       attr_accessor :email
       attr_accessor :password
 
-      ATTRS = %i[client_id email password].freeze
+      ATTRS = %i[email password].freeze
 
       def initialize(args)
-        attr_set(args) if args.key?(:client_id)
+        attr_set(args) if args.key?(:email)
         c = self.class.load_config(args[:path])
         attr_set(c)
       end

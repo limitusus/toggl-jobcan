@@ -22,8 +22,10 @@ opt.on('--dryrun') { |v| dryrun = v }
 opt.parse!(ARGV)
 
 raise RangeError, 'No dates given' if ARGV.empty?
+
 target_days = ARGV.map do |s|
   raise RangeError, 'Invalid format' unless s.match?(/\d#{8}/)
+
   Date.parse(s)
 end
 
@@ -46,12 +48,12 @@ puts 'Driver ready'
 
 target_days.each do |date|
   puts "Input date: #{date}"
-  jobcan.navigate_to_attendance_modify_day(date)
   working_times = jobcan.fetch_toggl_worktime(date).flatten
   if working_times.any?(&:nil?)
     puts 'Includes nil data: skip'
     next
   end
+  jobcan.navigate_to_attendance_modify_day(date)
   jobcan.input_day_worktime(date, working_times)
   sleep 1
   puts "  - Finish: #{date}; Total time: #{jobcan.toggl.total_time}"
