@@ -23,7 +23,6 @@ module Toggl
         notice: %(//textarea[@name='notice']),
         load_button: %(//input[@value='表示']),
         submit: %(//input[@type='submit']),
-        password_label: %(//label[@for='user_password']),
         flash: %(//p[@class='flash flash__alert'])
       }.freeze
 
@@ -44,9 +43,6 @@ module Toggl
 
       def login
         @driver.navigate.to JOBCAN_URLS[:login]
-        # login if <label for="user_password"> exists
-        raise unless may_find_element(:xpath, XPATHS[:password_label])
-
         send_credentials
         @driver.find_element(:xpath, XPATHS[:submit]).click
         raise JobcanLoginFailure if may_find_element(:xpath, XPATHS[:flash])
