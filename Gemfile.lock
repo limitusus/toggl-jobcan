@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    toggl-jobcan (0.3.0)
+    toggl-jobcan (0.3.1)
       chromedriver-helper
       selenium-webdriver
       toggl-worktime (~> 0.3.0, >= 0.3.2)
