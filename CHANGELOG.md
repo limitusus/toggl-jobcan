@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.3.1](https://github.com/limitusus/toggl-jobcan/tree/v0.3.1) (2019-02-01)
+[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.3.0...v0.3.1)
+
+**Merged pull requests:**
+
+- Fix bug from 2019 [\#4](https://github.com/limitusus/toggl-jobcan/pull/4) ([limitusus](https://github.com/limitusus))
+
 ## [v0.3.0](https://github.com/limitusus/toggl-jobcan/tree/v0.3.0) (2018-09-26)
 [Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.2.0...v0.3.0)
 
