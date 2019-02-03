@@ -32,12 +32,20 @@ module Toggl
         banner: 'CREDENTIAL', required: false,
         desc: 'credentials file for Jobcan'
       )
+      method_option(
+        :days,
+        type: :boolean,
+        default: false,
+        desc: 'print days and exit'
+      )
       method_option :dryrun, type: :boolean
       def main(*args)
         parse_args(args)
         puts '*** DRYRUN MODE ***' if options[:dryrun]
 
         show_target_days
+        return if options[:days]
+
         prepare_jobcan
 
         puts 'Driver ready'
@@ -110,8 +118,8 @@ module Toggl
           puts "  - Finish: #{date}; Total time: #{jobcan.toggl.total_time}"
         end
       end
-
-      class NoDayGivenError < StandardError; end
     end
+
+    class NoDayGivenError < StandardError; end
   end
 end

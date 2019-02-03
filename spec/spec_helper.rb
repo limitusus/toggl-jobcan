@@ -13,4 +13,18 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  # From erikhuda/thor
+  def capture(stream)
+    begin
+      stream = stream.to_s
+      eval "$#{stream} = StringIO.new" # rubocop:disable Security/Eval
+      yield
+      result = eval("$#{stream}").string # rubocop:disable Security/Eval
+    ensure
+      eval("$#{stream} = #{stream.upcase}") # rubocop:disable Security/Eval
+    end
+
+    result
+  end
 end
