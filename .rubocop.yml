@@ -11,3 +11,7 @@ Metrics/BlockLength:
 Style/EvalWithLocation:
   Exclude:
     - spec/**/*.rb
+
+Security/Eval:
+  Exclude:
+    - spec/**/*.rb
