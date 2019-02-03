@@ -15,8 +15,9 @@ module Toggl
       DEFAULT_TOGGL_WORKTIME_CONFIG_FILE_PATH = "#{ENV['HOME']}/.toggl_worktime"
 
       desc(
-        'DATE [DATE...]',
-        'Register worktime in Toggl into Jobcan for the given dates'
+        '[options] DATE [DATE...]',
+        'Register worktime in Toggl into Jobcan for the given dates ' \
+        '("toggl-jobcan help main" for detailed usage)'
       )
       method_option(
         :tw_config,

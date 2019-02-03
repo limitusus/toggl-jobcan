@@ -12,6 +12,10 @@ Style/EvalWithLocation:
   Exclude:
     - spec/**/*.rb
 
+Style/AccessModifierDeclarations:
+  Exclude:
+    - spec/**/*.rb
+
 Security/Eval:
   Exclude:
     - spec/**/*.rb
