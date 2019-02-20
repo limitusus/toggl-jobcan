@@ -4,61 +4,6 @@
 lib = File.expand_path('../lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'optparse'
-
-require 'selenium-webdriver'
 require 'toggl/jobcan'
 
-cred_file = "#{ENV['HOME']}/.jobcan"
-
-Version = Toggl::Jobcan::VERSION
-
-toggl_worktime_config = "#{ENV['HOME']}/.toggl_worktime"
-dryrun = false
-
-opt = OptionParser.new
-opt.on('-c CONFIG', '--tw-config CONFIG') { |v| toggl_worktime_config = v }
-opt.on('--dryrun') { |v| dryrun = v }
-opt.parse!(ARGV)
-
-raise RangeError, 'No dates given' if ARGV.empty?
-
-target_days = ARGV.map do |s|
-  raise RangeError, "Invalid format #{s}" unless s.match?(/\d{8}/)
-
-  Date.parse(s)
-end
-
-puts '*** DRYRUN MODE ***' if dryrun
-
-puts 'Target days:'
-target_days.each do |date|
-  puts "  - #{date.strftime('%F')}"
-end
-
-credentials = Toggl::Jobcan::Credentials.new(path: cred_file)
-jobcan = Toggl::Jobcan::Client.new(
-  credentials: credentials,
-  toggl_worktime_config: toggl_worktime_config,
-  dryrun: dryrun
-)
-jobcan.login
-
-puts 'Driver ready'
-
-target_days.each do |date|
-  puts "Input date: #{date}"
-  working_times = jobcan.fetch_toggl_worktime(date).flatten
-  if working_times.any?(&:nil?)
-    puts 'Includes nil data: skip'
-    next
-  end
-  jobcan.navigate_to_attendance_modify_day(date)
-  jobcan.input_day_worktime(date, working_times)
-  sleep 1
-  puts "  - Finish: #{date}; Total time: #{jobcan.toggl.total_time}"
-end
-
-jobcan.driver.quit
-
-puts 'All Input finished'
+Toggl::Jobcan::Cli.start

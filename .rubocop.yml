@@ -3,3 +3,19 @@ AllCops:
 
 Metrics/AbcSize:
   Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+
+Style/EvalWithLocation:
+  Exclude:
+    - spec/**/*.rb
+
+Style/AccessModifierDeclarations:
+  Exclude:
+    - spec/**/*.rb
+
+Security/Eval:
+  Exclude:
+    - spec/**/*.rb

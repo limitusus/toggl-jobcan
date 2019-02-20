@@ -12,6 +12,7 @@ module Toggl
       def toggl_time_format(date, timestamp)
         same_day = date == timestamp.to_date
         return timestamp.strftime('%H%M') if same_day
+
         hour = timestamp.hour + 24
         minute = timestamp.min
         format('%02d%02d', hour, minute)
