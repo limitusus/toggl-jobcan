@@ -7,8 +7,6 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'toggl/jobcan'
 
 # Default action: main
-unless %w[main version].include?(ARGV[0])
-  ARGV.unshift('main')
-end
+%w[main version help].include?(ARGV[0]) || ARGV.unshift('main')
 
 Toggl::Jobcan::Cli.start
