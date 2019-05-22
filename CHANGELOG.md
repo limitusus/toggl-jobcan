@@ -1,5 +1,15 @@
 # Change Log
 
+## [v0.4.0](https://github.com/limitusus/toggl-jobcan/tree/v0.4.0) (2019-05-22)
+[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.3.1...v0.4.0)
+
+**Merged pull requests:**
+
+- webdrivers [\#8](https://github.com/limitusus/toggl-jobcan/pull/8) ([limitusus](https://github.com/limitusus))
+- Use main as a default action [\#7](https://github.com/limitusus/toggl-jobcan/pull/7) ([limitusus](https://github.com/limitusus))
+- Use Thor as CLI testing preparation [\#6](https://github.com/limitusus/toggl-jobcan/pull/6) ([limitusus](https://github.com/limitusus))
+- Add minimum tests [\#5](https://github.com/limitusus/toggl-jobcan/pull/5) ([limitusus](https://github.com/limitusus))
+
 ## [v0.3.1](https://github.com/limitusus/toggl-jobcan/tree/v0.3.1) (2019-02-01)
 [Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.3.0...v0.3.1)
 
