@@ -1,5 +1,7 @@
 # Toggl::Jobcan
 
+![](https://img.shields.io/gem/v/toggl-jobcan.svg?style=popout)
+
 This gem provides `toggl-jobcan` command, which synchronises working time data in Toggl to JobCan.
 
 This gem requires Ruby >= 2.5.
