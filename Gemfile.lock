@@ -160,7 +160,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (~> 2.2.0)
   github_changelog_generator
   pry
   pry-byebug
@@ -169,4 +169,4 @@ DEPENDENCIES
   toggl-jobcan!
 
 BUNDLED WITH
-   1.17.3
+   2.2.21
