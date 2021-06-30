@@ -70,6 +70,7 @@ RSpec.describe Toggl::Jobcan::Cli do
     describe '#register_days' do
       let(:cli) { cli_class.new }
       let(:args) { [] }
+      let(:config) { 'spec/testdata/sample_config.yaml' }
 
       before do
         # Suppress warnings for testing
@@ -105,7 +106,7 @@ RSpec.describe Toggl::Jobcan::Cli do
           Date.new(2006, 1, 5),
           Date.new(2006, 1, 6)
         ]
-        cli_class.start(['main'] + days)
+        cli_class.start(['main'] + ['-r', config] + days)
         expect(args).to eq days_date
       end
     end
