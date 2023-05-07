@@ -8,6 +8,10 @@ module Toggl
   module Jobcan
     # CLI provider
     class Cli < Thor
+      def self.exit_on_failure?
+        true
+      end
+
       package_name 'toggl-jobcan'
       default_command :main
 
