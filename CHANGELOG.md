@@ -1,8 +1,26 @@
 # Changelog
 
-## [0.4.1](https://github.com/limitusus/toggl-jobcan/tree/0.4.1) (2021-07-01)
+## [0.4.3](https://github.com/limitusus/toggl-jobcan/tree/0.4.3) (2023-05-07)
 
-[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.4.0...0.4.1)
+[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.4.2...0.4.3)
+
+**Merged pull requests:**
+
+- Update thor and other gems [\#24](https://github.com/limitusus/toggl-jobcan/pull/24) ([limitusus](https://github.com/limitusus))
+
+## [v0.4.2](https://github.com/limitusus/toggl-jobcan/tree/v0.4.2) (2021-09-28)
+
+[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.4.1...v0.4.2)
+
+**Merged pull requests:**
+
+- Bump nokogiri from 1.11.7 to 1.12.5 [\#17](https://github.com/limitusus/toggl-jobcan/pull/17) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump addressable from 2.7.0 to 2.8.0 [\#16](https://github.com/limitusus/toggl-jobcan/pull/16) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Cosmetic [\#15](https://github.com/limitusus/toggl-jobcan/pull/15) ([limitusus](https://github.com/limitusus))
+
+## [v0.4.1](https://github.com/limitusus/toggl-jobcan/tree/v0.4.1) (2021-06-30)
+
+[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.4.0...v0.4.1)
 
 **Merged pull requests:**
 

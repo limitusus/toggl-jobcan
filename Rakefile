@@ -12,5 +12,5 @@ GitHubChangelogGenerator::RakeTask.new :changelog do |config|
   config.user = 'limitusus'
   config.project = 'toggl-jobcan'
   config.since_tag = 'v0.1.0'
-  config.future_release = '0.4.1'
+  config.future_release = '0.4.3'
 end
