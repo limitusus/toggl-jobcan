@@ -1,4 +1,4 @@
-From selenium/standalone-chrome:115.0
+FROM selenium/standalone-chrome:115.0
 
 RUN sudo apt-get update
 RUN sudo apt-get install -y git vim unzip gcc libssl-dev libreadline-dev  libz-dev patch build-essential make
