@@ -1,8 +1,17 @@
 # Changelog
 
-## [0.4.3](https://github.com/limitusus/toggl-jobcan/tree/0.4.3) (2023-05-07)
+## [0.5.0](https://github.com/limitusus/toggl-jobcan/tree/0.5.0) (2024-06-02)
 
-[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.4.2...0.4.3)
+[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.4.3...0.5.0)
+
+**Merged pull requests:**
+
+- Use the latest toggl-worktime for Toggl API v9 [\#26](https://github.com/limitusus/toggl-jobcan/pull/26) ([limitusus](https://github.com/limitusus))
+- add Dockerfile [\#25](https://github.com/limitusus/toggl-jobcan/pull/25) ([hoshihaya](https://github.com/hoshihaya))
+
+## [v0.4.3](https://github.com/limitusus/toggl-jobcan/tree/v0.4.3) (2023-05-07)
+
+[Full Changelog](https://github.com/limitusus/toggl-jobcan/compare/v0.4.2...v0.4.3)
 
 **Merged pull requests:**
 
