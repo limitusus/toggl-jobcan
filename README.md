@@ -1,7 +1,6 @@
 # Toggl::Jobcan
 
 ![](https://img.shields.io/gem/v/toggl-jobcan.svg?style=popout)
-[![Build Status](https://travis-ci.com/limitusus/toggl-jobcan.svg?branch=main)](https://travis-ci.com/limitusus/toggl-jobcan)
 
 This gem provides `toggl-jobcan` command, which synchronises working time data in Toggl to JobCan.
 
