@@ -20,11 +20,11 @@ RUN anyenv install rbenv
 RUN git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 # ruby
-RUN rbenv install 2.7.7
-RUN rbenv global 2.7.7
+RUN rbenv install 3.1.4
+RUN rbenv global 3.1.4
 
 # toggl-jobcan
-RUN gem install selenium-webdriver -v 4.9.0
+RUN gem install selenium-webdriver -v 4.21.1
 RUN gem install toggl-jobcan
 
 ENTRYPOINT ["toggl-jobcan"]
