@@ -104,27 +104,40 @@ module Toggl
           end
         end
 
-        def register_days
-          @target_days.each do |date|
-            register_day(date)
+        # To collect time entries in an API call, target days must be in a single month
+        def validate_days_in_a_month
+          day = @target_days.first
+          y = day.year
+          m = day.month
+          unless @target_days.all? { |d| d.year == y and d.month == m }
+            raise DifferentYearMonthError, "Different year/month=#{d.year}/#{d.month}"
           end
         end
 
-        def register_day(date)
+        def register_days
+          validate_days_in_a_month
+          working_times_map = jobcan.fetch_toggl_worktime(@target_days)
+          @target_days.each do |date|
+            register_day(working_times_map, date)
+          end
+        end
+
+        def register_day(working_times_map, date)
           puts "Input date: #{date}"
-          working_times = jobcan.fetch_toggl_worktime(date).flatten
-          if working_times.any?(&:nil?)
+          working_times = working_times_map[date.day]&.flatten
+          if working_times.nil? || working_times.any?(&:nil?)
             puts 'Includes nil data: skip'
             return
           end
           jobcan.navigate_to_attendance_modify_day(date)
           jobcan.input_day_worktime(date, working_times)
           sleep 1
-          puts "  - Finish: #{date}; Total time: #{jobcan.toggl.total_time}"
+          puts "  - Finish: #{date}; Total time: #{jobcan.toggl.total_time(day: date.day)}"
         end
       end
     end
 
     class NoDayGivenError < StandardError; end
+    class DifferentYearMonthError < StandardError; end
   end
 end

@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'selenium-webdriver'
   spec.add_dependency 'thor'
-  spec.add_dependency 'toggl-worktime', '~> 0.6.0', '>= 0.6.0'
+  spec.add_dependency 'toggl-worktime', '~> 0.7.0', '>= 0.7.0'
   spec.add_dependency 'webdrivers'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'gem-release'
