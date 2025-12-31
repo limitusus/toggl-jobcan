@@ -14,6 +14,15 @@ RSpec.describe Toggl::Jobcan::Cli do
       def driver
         WebDriverMock.new
       end
+
+      def fetch_toggl_worktime(days)
+        @received_target_days = days
+        m = {}
+        days.each do |date|
+          m[date.day] = []
+        end
+        m
+      end
     end
   end
 
@@ -84,8 +93,8 @@ RSpec.describe Toggl::Jobcan::Cli do
         allow_any_instance_of(cli_class).to receive(:jobcan) do
           JobcanMock.new
         end
-        allow_any_instance_of(cli_class).to receive(:register_day) do |_cli, a|
-          args.append(a)
+        allow_any_instance_of(cli_class).to receive(:register_day) do |_client, map, date|
+          args << date
         end
       end
 
