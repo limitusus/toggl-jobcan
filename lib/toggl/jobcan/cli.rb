@@ -2,7 +2,7 @@
 
 require 'thor'
 require 'optparse'
-require 'selenium-webdriver'
+require 'ferrum'
 
 module Toggl
   module Jobcan

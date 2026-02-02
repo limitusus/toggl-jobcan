@@ -24,7 +24,6 @@ RUN rbenv install 3.1.4
 RUN rbenv global 3.1.4
 
 # toggl-jobcan
-RUN gem install selenium-webdriver -v 4.21.1
 RUN gem install toggl-jobcan
 
 ENTRYPOINT ["toggl-jobcan"]
